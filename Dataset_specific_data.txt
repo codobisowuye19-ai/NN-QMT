@@ -1,0 +1,192 @@
+# Original Complete Dataset (36 samples)
+full_data = [
+    ['0,0', 0, 0, 100, 900],
+    ['0,1', 100, 900, 0, 0],
+    ['0,+', 50, 450, 50, 450],
+    ['0,-', 50, 450, 50, 450],
+    ['0,+i', 50, 450, 50, 450],
+    ['0,-i', 50, 450, 50, 450],
+    ['1,0', 900, 100, 0, 0],
+    ['1,1', 0, 0, 900, 100],
+    ['1,+', 450, 50, 450, 50],
+    ['1,-', 450, 50, 450, 50],
+    ['1,+i', 450, 50, 450, 50],
+    ['1,-i', 450, 50, 450, 50],
+    ['+,0', 450, 50, 50, 450],
+    ['+,1', 50, 450, 450, 50],
+    ['+,+', 400, 100, 400, 100],
+    ['+,-', 100, 400, 100, 400],
+    ['+,+i', 250, 250, 250, 250],
+    ['+,-i', 250, 250, 250, 250],
+    ['-,0', 450, 50, 50, 450],
+    ['-,1', 50, 450, 450, 50],
+    ['-,+', 100, 400, 100, 400],
+    ['-,-', 400, 100, 400, 100],
+    ['-,+i', 250, 250, 250, 250],
+    ['-,-i', 250, 250, 250, 250],
+    ['+i,0', 450, 50, 50, 450],
+    ['+i,1', 50, 450, 450, 50],
+    ['+i,+', 250, 250, 250, 250],
+    ['+i,-', 250, 250, 250, 250],
+    ['+i,+i', 400, 100, 100, 400],
+    ['+i,-i', 100, 400, 400, 100],
+    ['-i,0', 450, 50, 50, 450],
+    ['-i,1', 50, 450, 450, 50],
+    ['-i,+', 250, 250, 250, 250],
+    ['-i,-', 250, 250, 250, 250],
+    ['-i,+i', 100, 400, 400, 100],
+    ['-i,-i', 400, 100, 100, 400]
+]
+
+# Dataset of 32 samples (removed 4 samples with relatively less information)
+data_32 = [
+    ['0,0', 0, 0, 100, 900],
+    ['0,1', 100, 900, 0, 0],
+    ['0,+', 50, 450, 50, 450],
+    ['0,-', 50, 450, 50, 450],
+    ['0,+i', 50, 450, 50, 450],
+    ['0,-i', 50, 450, 50, 450],
+    ['1,0', 900, 100, 0, 0],
+    ['1,1', 0, 0, 900, 100],
+    ['1,+', 450, 50, 450, 50],
+    ['1,-', 450, 50, 450, 50],
+    ['1,+i', 450, 50, 450, 50],
+    ['1,-i', 450, 50, 450, 50],
+    ['+,0', 450, 50, 50, 450],
+    ['+,1', 50, 450, 450, 50],
+    ['+,+', 400, 100, 400, 100],
+    ['+,-', 100, 400, 100, 400],
+    ['+,+i', 250, 250, 250, 250],
+    ['+,-i', 250, 250, 250, 250],
+    ['-,0', 450, 50, 50, 450],
+    ['-,1', 50, 450, 450, 50],
+    ['-,+', 100, 400, 100, 400],
+    ['-,-', 400, 100, 400, 100],
+    ['-,+i', 250, 250, 250, 250],
+    ['-,-i', 250, 250, 250, 250],
+    ['+i,0', 450, 50, 50, 450],
+    ['+i,1', 50, 450, 450, 50],
+    ['+i,+', 250, 250, 250, 250],
+    ['+i,-', 250, 250, 250, 250],
+    ['+i,+i', 400, 100, 100, 400],
+    ['+i,-i', 100, 400, 400, 100],
+    ['-i,0', 450, 50, 50, 450],
+    ['-i,1', 50, 450, 450, 50]
+    # Removed ['-i,+', 250, 250, 250, 250], (symmetric to -i,-)
+    # Removed ['-i,-', 250, 250, 250, 250], (symmetric to -i,+)
+    # Removed ['-i,+i', 100, 400, 400, 100], (symmetric to +,-i)
+    # Removed ['-i,-i', 400, 100, 100, 400]  (symmetric to +,+i)
+]
+
+# Dataset of 24 samples (retain all basis state combinations and X/Y basis measurements)
+data_24 = [
+    # Basis state combinations (4)
+    ['0,0', 0, 0, 100, 900],
+    ['0,1', 100, 900, 0, 0],
+    ['1,0', 900, 100, 0, 0],
+    ['1,1', 0, 0, 900, 100],
+    
+    # Basis state and superposition state measurements (8)
+    ['0,+', 50, 450, 50, 450],
+    ['0,+i', 50, 450, 50, 450],
+    ['1,+', 450, 50, 450, 50],
+    ['1,+i', 450, 50, 450, 50],
+    ['+,0', 450, 50, 50, 450],
+    ['+i,0', 450, 50, 50, 450],
+    ['+,1', 50, 450, 450, 50],
+    ['+i,1', 50, 450, 450, 50],
+    
+    # X-basis measurements (4)
+    ['+,+', 400, 100, 400, 100],
+    ['+,-', 100, 400, 100, 400],
+    ['-,+', 100, 400, 100, 400],
+    ['-,-', 400, 100, 400, 100],
+    
+    # Y-basis measurements (4)
+    ['+i,+i', 400, 100, 100, 400],
+    ['+i,-i', 100, 400, 400, 100],
+    ['-i,+i', 100, 400, 400, 100],
+    ['-i,-i', 400, 100, 100, 400],
+    
+    # Cross-basis measurements (4)
+    ['+,+i', 250, 250, 250, 250],
+    ['+i,+', 250, 250, 250, 250],
+    ['+,-i', 250, 250, 250, 250],
+    ['-i,+', 250, 250, 250, 250]
+]
+
+# Dataset of 16 samples (minimum viable dataset, covering all necessary information)
+data_16 = [
+    # Basis state combinations (4) - provide diagonal element information
+    ['0,0', 0, 0, 100, 900],
+    ['0,1', 100, 900, 0, 0],
+    ['1,0', 900, 100, 0, 0],
+    ['1,1', 0, 0, 900, 100],
+    
+    # X-basis measurements (4) - provide real part coherence information
+    ['+,+', 400, 100, 400, 100],
+    ['+,-', 100, 400, 100, 400],
+    ['-,+', 100, 400, 100, 400],
+    ['-,-', 400, 100, 400, 100],
+    
+    # Y-basis measurements (4) - provide imaginary part coherence information
+    ['+i,+i', 400, 100, 100, 400],
+    ['+i,-i', 100, 400, 400, 100],
+    ['-i,+i', 100, 400, 400, 100],
+    ['-i,-i', 400, 100, 100, 400],
+    
+    # Cross-basis measurements (4) - provide mixed information
+    ['0,+', 50, 450, 50, 450],      # Basis state and X-basis
+    ['0,+i', 50, 450, 50, 450],     # Basis state and Y-basis
+    ['+,0', 450, 50, 50, 450],      # X-basis and basis state
+    ['+i,0', 450, 50, 50, 450]      # Y-basis and basis state
+]
+
+# Dataset of 8 samples (critically minimal dataset)
+data_8 = [
+    # Basis state combinations (2) - minimal diagonal information
+    ['0,0', 0, 0, 100, 900],
+    ['1,1', 0, 0, 900, 100],
+    
+    # X-basis measurements (2) - minimal real part coherence information
+    ['+,+', 400, 100, 400, 100],
+    ['+,-', 100, 400, 100, 400],
+    
+    # Y-basis measurements (2) - minimal imaginary part coherence information
+    ['+i,+i', 400, 100, 100, 400],
+    ['+i,-i', 100, 400, 400, 100],
+    
+    # Cross measurements (2) - key phase information
+    ['0,+', 50, 450, 50, 450],      # Basis state and X-basis
+    ['0,+i', 50, 450, 50, 450]      # Basis state and Y-basis
+]
+
+# Dataset of 6 samples (severely underdetermined)
+data_6 = [
+    # Basis state measurements (2)
+    ['0,0', 0, 0, 100, 900],
+    ['1,1', 0, 0, 900, 100],
+    
+    # X-basis measurements (2)
+    ['+,+', 400, 100, 400, 100],
+    ['+,-', 100, 400, 100, 400],
+    
+    # Y-basis measurements (2)
+    ['+i,+i', 400, 100, 100, 400],
+    ['+i,-i', 100, 400, 400, 100]
+]
+
+# Dataset of 3 samples (extremely underdetermined)
+data_3 = [
+    # One basis state, one X-basis, one Y-basis
+    ['0,0', 0, 0, 100, 900],        # Diagonal information
+    ['+,+', 400, 100, 400, 100],    # Real part coherence
+    ['+i,+i', 400, 100, 100, 400]   # Imaginary part coherence
+]
+
+# Dataset of 1 sample (completely impossible to uniquely determine)
+data_1 = [
+    # Using only one measurement, POVM cannot be determined at all
+    ['0,0', 0, 0, 100, 900]
+]
+
